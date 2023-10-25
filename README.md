@@ -1,7 +1,6 @@
 <img src="assets/logo.png" width="100">
 
-# uav-radio
-# Introduction
+## uav-radio
 UAVRadio: Radio Link Path Loss Estimation for UAVs Python Module
 
 ## Introduction
