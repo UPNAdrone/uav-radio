@@ -46,4 +46,4 @@ If you use this module for research, please consider citing our paper to acknowl
 
 ---
 
-![](assets/images/Logotipo_UPNA.png){width="180"}
+![](assets/images/Logotipo_UPNA.png | width=180)
