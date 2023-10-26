@@ -36,7 +36,7 @@ class PathLossCalculator:
         Args:
             distance (float): Distance between transmitter and receiver (meters).
             frequency (float): Signal frequency (Hz).
-            scenario (string): "open_field", "urban_rural", "lightly_hilly_rural", "urban", "suburban", "hilly_with_ridge", "dry_hilly", "very_mountainous", "fresh_water", "sea", "custom".
+            scenario (string): "open_field", "urban_rural", "urban", "suburban", "hilly_with_ridge", "dry_hilly", "very_mountainous", "fresh_water", "sea", "custom".
             n_custom (float): custom path loss exponent, use with scenario="custom".
             sigma_custom (float): custom standard-deviation, use with scenario="custom".
             speed (float): UAV speed (mph) for "urban" and "suburban" cases.
@@ -90,9 +90,6 @@ class PathLossCalculator:
         elif scenario == "urban_rural":
             n = 4.1
             sigma = 5.24
-        elif scenario == "lightly_hilly_rural":
-            print("Not implemented yet")
-            return 0,0
         elif scenario == "urban":
             if (frequency >= 9E+08) and (frequency <= 1.2E+09):
                 n = 1.7
@@ -377,8 +374,8 @@ class PathLossCalculator:
             gamma_1 = 0.74
             gamma_2 = 2.29
             psi = 3.9
-        else:
-            print("Using user provided gamma_1, gamma_2, psi=0")
+        #else:
+            #print("Using user provided gamma_1, gamma_2, psi=0")
         
         if distance < d_b:
             pl = pl_0 + 10 * gamma_1 * math.log10(distance/self.d0)
@@ -503,7 +500,7 @@ class PathLossCalculator:
         # Set axis labels and legend
         plt.xlabel('X-coordinate (m)')
         plt.ylabel('Y-coordinate (m)')
-        plt.legend()
+       # plt.legend()
         
         default_title = "Path loss contour plot: "
         
