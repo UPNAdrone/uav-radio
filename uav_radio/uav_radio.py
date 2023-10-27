@@ -264,7 +264,7 @@ class PathLossCalculator:
         return pl, sigma
     
     
-    def two_ray_perfect_reflection_pl(self, distance, frequency, h_t = 1.5, h_r=30):
+    def two_ray_pl(self, distance, frequency, h_t = 1.5, h_r=30):
         """
         Calculate Two Ray Path Loss Model (assuming perfect reflection).
 
@@ -439,13 +439,15 @@ class PathLossCalculator:
         return distance_2d
     
     # Auxiliary methods for plotting 
-    def create_path_loss_contour(self, tx_position, rx_position, range_x, range_y, points, pl_func='free_space_pl', **kwargs):
+    def create_path_loss_contour(self, tx_position, rx_position, h_tx, h_rx, range_x, range_y, points, pl_func='free_space_pl', **kwargs):
         """
         Create a path loss contour plot centered around the transmitter.
 
         Args:
             tx_position (tuple): Transmitter position (x, y) in meters.
             rx_position (tuple): Receiver position (x, y) in meters.
+            h_tx (float): Transmitter height in meters.
+            h_rx (float): Receiver height in meters.
             range_x (float): range in meters from the tx_position[0]
             range_y (float): range in meters from the tx_position[1]
             points (int): number of points to simulate in both directions
@@ -459,8 +461,8 @@ class PathLossCalculator:
         X, Y = np.meshgrid(x_range, y_range)
 
         # Calculate distances from transmitter for each point in the grid
-        distances = np.sqrt((X - tx_position[0])**2 + (Y - tx_position[1])**2)
-
+        distances_plane = np.sqrt((X - tx_position[0])**2 + (Y - tx_position[1])**2)
+        distances = np.sqrt(distances_plane**2 + (h_rx-h_tx)**2)
 
         pl_func_name = getattr(self, pl_func)
         
@@ -472,7 +474,7 @@ class PathLossCalculator:
         #path_losses, _ = pl_func_name(distances, **kwargs)
 
         # Create a contour plot
-        plt.contourf(X, Y, path_losses, levels=20, cmap='viridis')
+        plt.contourf(X, Y, path_losses, levels= np.linspace(40,85,100), cmap='viridis')
         plt.colorbar(label='Path Loss (dB)')
 
         # Add transmitter and receiver positions
@@ -525,8 +527,8 @@ if __name__ == "__main__":
     
     # Create and display the path loss contour plot
     custom_params = {'frequency': 868000000}
-    calculator.create_path_loss_contour(tx_position, rx_position, 100, 100, 100, pl_func='free_space_pl', **custom_params)
-    calculator.create_path_loss_contour(tx_position, rx_position, 100, 100, 100, pl_func='log_distance_pl', **custom_params)
+    calculator.create_path_loss_contour(tx_position, rx_position, 0.01, 25, 100, 100, 100, pl_func='free_space_pl', **custom_params)
+    calculator.create_path_loss_contour(tx_position, rx_position, 0.01, 25, 100, 100, 100, pl_func='log_distance_pl', **custom_params)
     
 
    
