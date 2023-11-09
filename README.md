@@ -34,16 +34,13 @@ The **Radio Link Path Loss Estimation for UAVs** Python module is made available
 If you use this module for research, please consider citing our paper to acknowledge its contribution:
 
 ```bibtex
-@article{your_last_name:year,
-  author    = {Your Last Name, Your First Name},
-  title     = {Title of Your Paper},
-  journal   = {Journal Name},
-  volume    = {Volume Number},
-  number    = {Issue Number},
-  pages     = {Page Range},
-  year      = {Publication Year},
-  doi       = {Your DOI},
-  url       = {URL of Your Paper (if available)},
+@unpublished{uav-radio:2023,
+  author    = {Al{\'a}ez, D and Celaya-Echarri, M and Azpilicueta, L and Villadangos, J},
+  title     = {UAVradio: Radio Link Path Loss Estimation for UAVs},
+  month     = {11},
+  year      = {2023},
+  doi       = {10.2139/ssrn.4618684},
+  url       = {https://ssrn.com/abstract=4618684 },
 }
 ```
 
