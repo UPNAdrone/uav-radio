@@ -27,6 +27,8 @@ The **Radio Link Path Loss Estimation for UAVs** module includes the following k
 ### Usage Scenario
 Consider a scenario where an engineer needs to plan the communication range for a UAV operating in a densely forested area. By leveraging this module, the engineer can select the Log-Distance Path Loss model, adjust parameters based on the foliage intensity, and visualize the path loss distribution using contour plots. This valuable insight informs decisions regarding antenna placement, transmission power, and communication protocols for the UAV.
 
+An updated list of available examples, including simplified Python notebooks, can be found inside the *examples* folder.
+
 ## Licensing
 The **Radio Link Path Loss Estimation for UAVs** Python module is made available under the [MIT License](https://opensource.org/licenses/MIT). You are free to use, modify, and distribute this module in accordance with the terms of the MIT License.
 
